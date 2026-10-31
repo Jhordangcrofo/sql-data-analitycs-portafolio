@@ -1,0 +1,20 @@
+9. Annual Revenue for the Condiments Category
+-- =====================================================
+-- BUSINESS QUESTION:
+-- How did annual revenue evolve for the Condiments
+-- product category over time?
+--
+-- SKILLS:
+-- JOIN, SUM, ROUND, GROUP BY, strftime,
+-- Category Filtering, Time-Based Analysis
+-- =====================================================
+SELECT
+strftime('%Y',i.OrderDate) AS "Year",
+ROUND(SUM(i.ExtendedPrice),2) AS "Total"
+FROM Invoices i
+JOIN Products p
+	ON i.ProductID = p.ProductID
+JOIN Categories c
+	ON p.CategoryID = c.CategoryID
+WHERE c.CategoryName = 'Condiments'
+GROUP BY strftime('%Y',i.OrderDate);
