@@ -1,0 +1,17 @@
+9. Monthly Revenue Analysis — Exercise 17
+-- =====================================================
+-- BUSINESS QUESTION:
+-- How did monthly revenue evolve throughout 2009?
+--
+-- SKILLS:
+-- SUM, ROUND, strftime, GROUP BY, ORDER BY,
+-- Date Filtering, Time-Based Analysis
+-- =====================================================
+SELECT
+strftime('%m',InvoiceDate) AS “Month”,
+ROUND(SUM(Total),2) AS "Total"
+FROM invoices
+WHERE InvoiceDate >= '2009-01-01'
+AND InvoiceDate < '2010-01-01'
+GROUP BY strftime('%m',InvoiceDate)
+ORDER BY strftime('%m',InvoiceDate) ASC;
