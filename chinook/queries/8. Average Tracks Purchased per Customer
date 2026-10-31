@@ -1,0 +1,25 @@
+8. Average Tracks Purchased per Customer
+-- =====================================================
+-- BUSINESS QUESTION:
+-- How many tracks does each purchasing customer buy
+-- on average?
+--
+-- SKILLS:
+-- CTEs (WITH), COUNT DISTINCT, SUM, Aggregation,
+-- Mathematical Operations
+-- =====================================================
+
+WITH customers_with_purchase AS (
+  SELECT
+  COUNT(DISTINCT i.CustomerId) AS customers_total
+  FROM invoices i
+),
+
+purchased_tracks AS (
+  SELECT
+  SUM(it.Quantity) AS total_tracks
+  FROM invoice_items it)
+
+SELECT
+ROUND(total_tracks / customers_total,0) AS "Average Tracks per Customer"
+FROM customers_with_purchase, purchased_tracks;
