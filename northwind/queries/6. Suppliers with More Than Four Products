@@ -1,0 +1,16 @@
+6. Suppliers with More Than Four Products
+-- =====================================================
+-- BUSINESS QUESTION:
+-- Which suppliers provide more than four products?
+--
+-- SKILLS:
+-- JOIN, COUNT, GROUP BY, HAVING
+-- =====================================================
+SELECT
+s.CompanyName AS "Supplier",
+COUNT(p.ProductName) AS "Products"
+FROM Suppliers s
+JOIN Products p
+ON s.SupplierID = p.SupplierID
+GROUP BY s.CompanyName
+HAVING COUNT(p.ProductName) > 4;
