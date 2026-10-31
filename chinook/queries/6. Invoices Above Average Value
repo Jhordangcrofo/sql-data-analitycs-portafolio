@@ -1,0 +1,17 @@
+6. Invoices Above Average Value
+-- =====================================================
+-- BUSINESS QUESTION:
+-- Which invoices have a total value above the average
+-- invoice amount?
+--
+-- SKILLS:
+-- Subqueries, AVG, WHERE, Aggregate Comparison
+-- =====================================================
+
+SELECT
+InvoiceId AS "ID",
+Total
+FROM invoices
+WHERE Total > (SELECT
+               AVG(Total)
+              	FROM invoices);
