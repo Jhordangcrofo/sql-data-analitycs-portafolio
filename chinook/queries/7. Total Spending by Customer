@@ -1,0 +1,17 @@
+7. Total Spending by Customer
+-- =====================================================
+-- BUSINESS QUESTION:
+-- Which customers have the highest total spending?
+--
+-- SKILLS:
+-- JOIN, SUM, GROUP BY, ORDER BY
+-- =====================================================
+SELECT
+c.CustomerId AS ID,
+c.FirstName||' '||c.LastName AS "Customer",
+SUM(i.Total) AS "Total Spent"
+FROM customers c
+JOIN invoices i
+	ON c.CustomerId = i.CustomerId
+GROUP BY c.CustomerId
+ORDER BY SUM(i.Total) DESC;
