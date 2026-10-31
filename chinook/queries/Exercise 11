@@ -1,0 +1,16 @@
+5. Annual Sales Comparison — Exercise 11
+-- =====================================================
+-- BUSINESS QUESTION:
+-- How many invoices were generated, and what was the
+-- total revenue in 2009 and 2013?
+--
+-- SKILLS:
+-- strftime, COUNT, SUM, GROUP BY, Date Filtering
+-- =====================================================
+SELECT
+strftime('%Y', InvoiceDate) AS “Year”,
+COUNT(InvoiceId) AS "Invoices",
+SUM(Total) AS "Total"
+FROM invoices
+WHERE strftime('%Y', InvoiceDate IN ('2009','2013')
+GROUP BY strftime('%Y', InvoiceDate);
