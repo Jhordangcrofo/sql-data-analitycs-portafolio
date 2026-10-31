@@ -1,0 +1,18 @@
+8. Busiest Order Date in 1998
+-- =====================================================
+-- BUSINESS QUESTION:
+-- Which date had the highest number of orders in 1998?
+--
+-- SKILLS:
+-- COUNT, Date Filtering, GROUP BY, ORDER BY, LIMIT
+-- =====================================================
+
+SELECT
+OrderDate AS "Date",
+COUNT(OrderID) AS "Orders"
+FROM Orders
+WHERE "Date" >= '1998-01-01'
+AND "Date" < '1999-01-01'
+GROUP BY "Date"
+ORDER BY "Orders" DESC
+LIMIT 1;
